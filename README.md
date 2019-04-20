@@ -36,9 +36,10 @@ using RereDmlLpSolver
 end</i></span></font><span style="color: rgb(169, 183, 198); font-family: 宋体; font-size: 12pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;">
 </span></pre><div style="color: rgb(169, 183, 198); font-family: 宋体; font-size: 12pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;"><br></div></pre>
 
-<br/>
+
 <h4>
 More examples can be found here: <a href="https://github.com/lteb2002/ju4ja/tree/master/ju4ja/java/com/reremouse/ju4ja/example">Examples</a>
 </h4>
 <hr/>
+<br/>
 Contributions from: Lteb2002@163.com
