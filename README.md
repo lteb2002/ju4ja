@@ -23,8 +23,8 @@ function greetings(name::String)
     return str
 end
 
-# g=greetings("test")
-# println(g)
+#g=greetings("test")
+#println(g)
 
 #using Ju4ja and the example solver for linear programming
 using Ju4ja
