@@ -17,16 +17,21 @@ import java.util.List;
 public class Ju4jaTest {
 
     /**
-     * Class a function named as 'greetings' on Julia server
+     * Call function named as 'greetings' on Julia server
      */
     @Test
     public void testRemoteGreeting() {
-        String ip = "127.0.0.1";
-        int port = 6996;
+        //BasicConfigurator.configure();
+        String ip = "127.0.0.1"; //Ip address of Ju4ja server
+        int port = 6996;//port of Ju4ja server
+        //Build a Ju4ja client to call function in Julia
         Ju4jaClient client = new Ju4jaClient(ip, port);
+        //encapsulate arguments for remote function
         Object[] as = {"Zhang fei"};
+        //invocation to the remote function
         JavaCallResult result = client.invokeFunction("greetings", "Main", as);
         if (result != null) {
+            //print out the result
             System.out.println(result.getResultStr());
             System.out.println(result.getStatus());
         }
