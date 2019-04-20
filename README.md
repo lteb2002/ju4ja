@@ -6,7 +6,7 @@ Java, along with its bro languages such as Scala, really sucks at numerical comp
 Projects like Spark, Breeze, ND4j, Common-math and Optimizer made great efforts to facilitate numerical computing in JVM ecosystem. 
 However, the whole Java community actually lags extremely behind Python and Julia with regard to numerical computing and machine learning. 
 Developers and scientists using Java and Scala have been struggling to push Java into such arena, but it ultimately turns out that Java lacks floating point accuracy, performance, as well as enthusiasm, towards mathematical computation.
-This project try to build a bridge from Java to Julia, which is perfectly suited to create fast and accurate numerical applications.
+This project tries to build a bridge from Java to Julia, which is perfectly suited to create fast and accurate numerical applications.
 </p>
 <h3>Basic usage 1.1 - Call remote function in Julia from Java</h3>
 <pre style="background-color:#2b2b2b;color:#a9b7c6;font-family:'宋体';font-size:12.0pt;">
