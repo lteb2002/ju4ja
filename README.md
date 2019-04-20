@@ -41,6 +41,4 @@ end</i></span></font><span style="color: rgb(169, 183, 198); font-family: 宋体
 More examples can be found here: <a href="https://github.com/lteb2002/ju4ja/tree/master/ju4ja/java/com/reremouse/ju4ja/example">Examples</a>
 </h4>
 <hr/>
-Contributions from:
-<br/>
-Lteb2002@163.com
+Contributions from: Lteb2002@163.com
