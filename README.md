@@ -6,7 +6,7 @@ Java, along with its bro languages such as Scala, really sucks at numerical comp
 Projects like Spark, Breeze, ND4j, Common-math and Optimizer made great efforts to facilitate numerical computing in JVM ecosystem. 
 However, the whole Java community actually lags extremely behind Python and Julia with regard to numerical computing and machine learning. 
 Developers and scientists using Java and Scala have been struggling to push Java into such arena, but it ultimately turns out that Java lacks floating point accuracy, performance, as well as enthusiasm, towards mathematical computation.
-So, this project try to build a bridge from Java to Julia, which is perfectly suited to create fast and accurate numerical applications.
+This project try to build a bridge from Java to Julia, which is perfectly suited to create fast and accurate numerical applications.
 </p>
 <h3>Basic usage 1.1 - Call remote function in Julia from Java</h3>
 <pre style="background-color:#2b2b2b;color:#a9b7c6;font-family:'宋体';font-size:12.0pt;">
@@ -21,9 +21,9 @@ push!(LOAD_PATH, "./")
 
 #A examle function ready to be called from java using Ju4ja
 function greetings(name::String)
-    str="Hi, $name"
-    println(str)
-    return str
+&nbsp;    str="Hi, $name"
+&nbsp;    println(str)
+&nbsp;    return str
 end
 
 #g=greetings("test")
@@ -35,7 +35,7 @@ using RereDmlLpSolver
 
 #start the Ju4ja server as a new coroutine
 @async begin
-    startServer()
+&nbsp;   startServer()
 end</span></font>
 </pre></div></div><div><br></div>
 
@@ -59,20 +59,20 @@ using GLPK
 export solveDmlLp
 
   #solve linear programming
-  function solveDmlLp(c::Vector,A::Matrix,b::Vector,ifReg::Bool=true)
-    model = JuMP.Model(with_optimizer(GLPK.Optimizer))
-    #println(length(c))
-    @variable(model, x[i=1:length(c)])
-    @constraint(model, con, A * x .&gt;= b)
-    @constraint(model, con0, x .&gt;= 0)
-    @objective(model, Min, c'*x )
-    status = optimize!(model)
-    result=JuMP.value.(x)
-    obj=JuMP.objective_value(model)
-    println("x = ", result)
-    println("Objective value: ", obj)
-    return result
-  end
+&nbsp;  function solveDmlLp(c::Vector,A::Matrix,b::Vector,ifReg::Bool=true)
+&nbsp;&nbsp;    model = JuMP.Model(with_optimizer(GLPK.Optimizer))
+&nbsp;&nbsp;    #println(length(c))
+&nbsp;&nbsp;    @variable(model, x[i=1:length(c)])
+&nbsp;&nbsp;    @constraint(model, con, A * x .&gt;= b)
+&nbsp;&nbsp;    @constraint(model, con0, x .&gt;= 0)
+&nbsp;&nbsp;    @objective(model, Min, c'*x )
+&nbsp;&nbsp;    status = optimize!(model)
+&nbsp;&nbsp;    result=JuMP.value.(x)
+&nbsp;&nbsp;    obj=JuMP.objective_value(model)
+&nbsp;&nbsp;    println("x = ", result)
+&nbsp;&nbsp;    println("Objective value: ", obj)
+&nbsp;&nbsp;    return result
+&nbsp;  end
 end</span></font><span style="color: rgb(169, 183, 198); font-family: 宋体; font-size: 12pt;">
 </span></pre></div></div><div><br></div>
 
