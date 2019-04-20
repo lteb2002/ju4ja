@@ -37,6 +37,39 @@ end</i></span></font><span style="color: rgb(169, 183, 198); font-family: 宋体
 </span></pre><div style="color: rgb(169, 183, 198); font-family: 宋体; font-size: 12pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;"><br></div></pre>
 
 
+<h3>Basic usage 2 - Call Julia function to solve a linear programming problem from Java</h3>
+
+<pre style="background-color:#2b2b2b;color:#a9b7c6;font-family:'宋体';font-size:12.0pt;"><span style="color:#629755;font-style:italic;">/**<br></span><span style="color:#629755;font-style:italic;"> * call Julia server to solve a linear programming problem<br></span><span style="color:#629755;font-style:italic;"> * The function is named as 'solveDmlLp'<br></span><span style="color:#629755;font-style:italic;"> */<br></span><span style="color:#bbb529;">@Test<br></span><span style="color:#cc7832;">public void </span><span style="color:#ffc66d;">testRemoteLinearProgramming</span>() {<br>    <span style="color:#629755;font-style:italic;">/**<br></span><span style="color:#629755;font-style:italic;">     * min c'x<br></span><span style="color:#629755;font-style:italic;">     * s.t. Ax &gt;= b, x&gt;=0<br></span><span style="color:#629755;font-style:italic;">     */<br></span><span style="color:#629755;font-style:italic;">    </span><span style="color:#cc7832;">double</span>[] c = {-<span style="color:#6897bb;">3</span><span style="color:#cc7832;">, </span>-<span style="color:#6897bb;">1</span><span style="color:#cc7832;">, </span>-<span style="color:#6897bb;">2</span>}<span style="color:#cc7832;">;<br></span><span style="color:#cc7832;">    double</span>[][] A = {<br>            {-<span style="color:#6897bb;">1.0</span><span style="color:#cc7832;">, </span>-<span style="color:#6897bb;">1.0</span><span style="color:#cc7832;">, </span>-<span style="color:#6897bb;">3.0</span>}<span style="color:#cc7832;">,<br></span><span style="color:#cc7832;">            </span>{-<span style="color:#6897bb;">2.0</span><span style="color:#cc7832;">, </span>-<span style="color:#6897bb;">2.0</span><span style="color:#cc7832;">, </span>-<span style="color:#6897bb;">5.0</span>}<span style="color:#cc7832;">,<br></span><span style="color:#cc7832;">            </span>{-<span style="color:#6897bb;">4.0</span><span style="color:#cc7832;">, </span>-<span style="color:#6897bb;">1.0</span><span style="color:#cc7832;">, </span>-<span style="color:#6897bb;">2.0</span>}<br>    }<span style="color:#cc7832;">;<br></span><span style="color:#cc7832;">    double</span>[] b = {-<span style="color:#6897bb;">30</span><span style="color:#cc7832;">, </span>-<span style="color:#6897bb;">24</span><span style="color:#cc7832;">, </span>-<span style="color:#6897bb;">36</span>}<span style="color:#cc7832;">;<br></span><span style="color:#cc7832;">    </span>String ip = <span style="color:#6a8759;">"127.0.0.1"</span><span style="color:#cc7832;">;<br></span><span style="color:#cc7832;">    int </span>port = <span style="color:#6897bb;">6996</span><span style="color:#cc7832;">;<br></span><span style="color:#cc7832;">    </span>Ju4jaClient client = <span style="color:#cc7832;">new </span>Ju4jaClient(ip<span style="color:#cc7832;">, </span>port)<span style="color:#cc7832;">;<br></span><span style="color:#cc7832;">    </span>Object[] as = {c<span style="color:#cc7832;">, </span>A<span style="color:#cc7832;">, </span>b}<span style="color:#cc7832;">;<br></span><span style="color:#cc7832;">    </span>JavaCallResult result = client.invokeFunction(<span style="color:#6a8759;">"solveDmlLp"</span><span style="color:#cc7832;">, </span><span style="color:#6a8759;">"RereDmlLpSolver"</span><span style="color:#cc7832;">, </span>as)<span style="color:#cc7832;">;<br></span><span style="color:#cc7832;">    </span><span style="color:#808080;">//System.out.println(result);<br></span><span style="color:#808080;">    </span><span style="color:#cc7832;">if </span>(result != <span style="color:#cc7832;">null</span>) {<br>        System.<span style="color:#9876aa;font-style:italic;">out</span>.println(result.getResultStr())<span style="color:#cc7832;">;<br></span><span style="color:#cc7832;">        </span><span style="color:#808080;">//System.out.println(result.getStatus());<br></span><span style="color:#808080;">    </span>}<br>}</pre>
+
+<h3>Basic usage 2 - Code snippet in Julia defines "solveDmlLp" function to solve linear programming problem</h3>
+
+<div><div><pre style="background-color: rgb(43, 43, 43);"><font color="#a9b7c6" face="宋体"><span style="font-size: 16px;">
+
+#This module works as a example of solving linear programming problems for Ju4ja
+module RereDmlLpSolver
+using JuMP
+using GLPK
+export solveDmlLp
+
+  #solve linear programming
+  function solveDmlLp(c::Vector,A::Matrix,b::Vector,ifReg::Bool=true)
+    model = JuMP.Model(with_optimizer(GLPK.Optimizer))
+    #println(length(c))
+    @variable(model, x[i=1:length(c)])
+    @constraint(model, con, A * x .&gt;= b)
+    @constraint(model, con0, x .&gt;= 0)
+    @objective(model, Min, c'*x )
+    status = optimize!(model)
+    result=JuMP.value.(x)
+    obj=JuMP.objective_value(model)
+    println("x = ", result)
+    println("Objective value: ", obj)
+    return result
+  end
+end</span></font><span style="color: rgb(169, 183, 198); font-family: 宋体; font-size: 12pt;">
+</span></pre></div></div><div><br></div>
+
+
 <h4>
 More examples can be found here: <a href="https://github.com/lteb2002/ju4ja/tree/master/ju4ja/java/com/reremouse/ju4ja/example">Examples</a>
 </h4>
