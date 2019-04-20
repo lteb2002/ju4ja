@@ -1,5 +1,5 @@
 # Ju4Ja - Julia for Java
-<strong>This project aims to makes java programs easier to call julia functions.</strong>
+<strong>This project aims to make java programs easier to call julia functions.</strong>
 <br/>
 <p style="line-height:20px;">
 Java, along with its bro languages such as Scala, really sucks at numerical computing. 
