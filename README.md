@@ -13,7 +13,7 @@ So, this project try to build a bridge from Java to Julia, which is perfectly su
 
 <h3>Basic usage 1.2 - Code snippet in Julia to define the "greetings" function and start Ju4ja server</h3>
 
-<pre style="background-color: rgb(43, 43, 43);"><pre><font color="#629755" face="宋体"><span style="font-size: 16px;"><i>#set the path where the modules are located
+<div><div><pre style="background-color: rgb(43, 43, 43);"><font color="#a9b7c6" face="宋体"><span style="font-size: 16px;">#set the path where the modules are located
 push!(LOAD_PATH, "./")
 
 #A examle function ready to be called from java using Ju4ja
@@ -33,9 +33,8 @@ using RereDmlLpSolver
 #start the Ju4ja server as a new coroutine
 @async begin
     startServer()
-end</i></span></font><span style="color: rgb(169, 183, 198); font-family: 宋体; font-size: 12pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;">
-</span></pre><div style="color: rgb(169, 183, 198); font-family: 宋体; font-size: 12pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;"><br></div></pre>
-
+end</span></font>
+</pre></div></div><div><br></div>
 
 <h3>Basic usage 2.1 - Call Julia function to solve a linear programming problem from Java</h3>
 
