@@ -69,6 +69,7 @@ export solveDmlLp
 end</span></font><span style="color: rgb(169, 183, 198); font-family: 宋体; font-size: 12pt;">
 </span></pre></div></div><div><br></div>
 
+Ju4Ja builds socket communications between Java (client) and Julia (Server), automatically transforms numeric (float, vector, matrix) arguments of Java to Julia format and invokes Julia function.
 
 <h4>
 More examples can be found here: <a href="https://github.com/lteb2002/ju4ja/tree/master/ju4ja/java/com/reremouse/ju4ja/example">Examples</a>
